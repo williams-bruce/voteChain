@@ -2,6 +2,8 @@ from ConnectDB import ConnectDB
 from Digest import digest
 import colorama
 
+colorama.init(autoreset=True)
+
 def integrityCheck():
     condb = ConnectDB()
 

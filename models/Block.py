@@ -3,6 +3,8 @@ from datetime import datetime
 from Digest import digest
 import colorama
 
+colorama.init(autoreset=True)
+
 class Block:
     BlockDBManipulator = ConnectDB()
     currentStudentId = None
