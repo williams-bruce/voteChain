@@ -35,95 +35,308 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-models.Block">
-<span id="models-block-module"></span><h2>models.Block module<a class="headerlink" href="#module-models.Block" title="Link to this heading">¶</a></h2>
+<span id="models-block-module"></span><span id="models-block-label"></span><h2>models.Block module<a class="headerlink" href="#module-models.Block" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="models.Block.Block">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.Block.</span></span><span class="sig-name descname"><span class="pre">Block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">studentId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.Block.Block" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que representa o Bloco em uma blockchain e cada voto.
+Toda vez que um objeto bloco é instanciado, é feito um registro no banco de dados com os dados da transação.
+No construtor é usado todos os métodos da classe Block.
+Instancia o Block e adiciona no banco de dados usando o currentHash anterior.
+Se não há Block anterior, então é usado Initial_Block_Config para gerar o primeiro Block do banco de dados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vote</strong> (<em>str</em>) – String do voto para gerar o Block.</p></li>
+<li><p><strong>studentId</strong> (<em>str</em>) – Identificador do aluno que votou.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.Block.Block.vote">
+<span class="sig-name descname"><span class="pre">vote</span></span><a class="headerlink" href="#models.Block.Block.vote" title="Link to this definition">¶</a></dt>
+<dd><p>A String do voto, representa em quem foi votado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.Block.Block.time">
+<span class="sig-name descname"><span class="pre">time</span></span><a class="headerlink" href="#models.Block.Block.time" title="Link to this definition">¶</a></dt>
+<dd><p>String que mostra quando o objeto foi instanciado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.Block.Block.currentHash">
+<span class="sig-name descname"><span class="pre">currentHash</span></span><a class="headerlink" href="#models.Block.Block.currentHash" title="Link to this definition">¶</a></dt>
+<dd><p>String que representa o hash da transação.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">Block</span> <span class="kn">import</span> <span class="n">Block</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">block</span> <span class="o">=</span> <span class="n">Block</span><span class="p">(</span><span class="s2">&quot;example_vote&quot;</span><span class="p">,</span><span class="s2">&quot;example_studentId&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="models.Block.Block.BlockDBManipulator">
 <span class="sig-name descname"><span class="pre">BlockDBManipulator</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ConnectDB.ConnectDB</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#models.Block.Block.BlockDBManipulator" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Parâmetro estático que gerencia os acessos ao banco de dados.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#models-connectdb-label"><span class="std std-ref">models.ConnectDB module</span></a></p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BlockDBManipulator (models.ConnectDB)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="models.Block.Block.currentStudentId">
 <span class="sig-name descname"><span class="pre">currentStudentId</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.Block.Block.currentStudentId" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Tem valor de inicialização None mas recebe a str studentId durante a execução do construtor e é usado para gerar o currentHash, no final do construtor recebe o valor None novamente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>currentStudentId (None)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.Block.Block.getLastCurrentHash">
 <span class="sig-name descname"><span class="pre">getLastCurrentHash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.Block.Block.getLastCurrentHash" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método estático que pega o último currentHash no banco de dados. usa Block.BlockDBManipulator.getMostlyRecentAdded().</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#models-connectdb-label"><span class="std std-ref">models.ConnectDB module</span></a></p></li>
+</ul>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.Block.Block.insert">
 <span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.Block.Block.insert" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método que insere o bloco no banco de dados. Usado automaticamente no construtor.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.Block.Block.remove">
 <span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.Block.Block.remove" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método estático que remove um bloco do banco de dados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – é passado para Block.BlockDBManipulator.remove().</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#models-connectdb-label"><span class="std std-ref">models.ConnectDB module</span></a></p></li>
+</ul>
+</div>
+</dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-models.ConnectDB">
-<span id="models-connectdb-module"></span><h2>models.ConnectDB module<a class="headerlink" href="#module-models.ConnectDB" title="Link to this heading">¶</a></h2>
+<span id="models-connectdb-module"></span><span id="models-connectdb-label"></span><h2>models.ConnectDB module<a class="headerlink" href="#module-models.ConnectDB" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="models.ConnectDB.ConnectDB">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.ConnectDB.</span></span><span class="sig-name descname"><span class="pre">ConnectDB</span></span><a class="headerlink" href="#models.ConnectDB.ConnectDB" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que faz os acessos, inserção e remoção no banco de dados. Precisa do arquivo Credentials do usuário para acessar o banco de dados.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.connection">
+<span class="sig-name descname"><span class="pre">connection</span></span><a class="headerlink" href="#models.ConnectDB.ConnectDB.connection" title="Link to this definition">¶</a></dt>
+<dd><p>Conexão com o banco de dados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mysql.connector.connection_cext.CMySQLConnection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.cursor">
+<span class="sig-name descname"><span class="pre">cursor</span></span><a class="headerlink" href="#models.ConnectDB.ConnectDB.cursor" title="Link to this definition">¶</a></dt>
+<dd><p>Cursor da conexão com o banco de dados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mysql.connector.connection_cext.CMySQLCursor</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.getAllAdded">
 <span class="sig-name descname"><span class="pre">getAllAdded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.ConnectDB.ConnectDB.getAllAdded" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método que retorna uma lista de todas as tuplas adicionadas ordenadas pela coluna time. A tabela deve ter coluna ‘time’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em>) – String que representa a tabela da qual as tuplas vão ser retiradas.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lista de todas as tuplas adicionadas. Usada para verificar integridade.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(list)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.getMostlyRecentAdded">
 <span class="sig-name descname"><span class="pre">getMostlyRecentAdded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.ConnectDB.ConnectDB.getMostlyRecentAdded" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método que retorna uma lista de todas as tuplas adicionadas ordenadas pela coluna time. A tabela deve ter coluna ‘time’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em>) – String que representa a tabela da qual a tupla vai ser retirada.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Retorna a ultima tupla adicionada. Usada para criar novos blocos. Se não há dados na tabela retorna None.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(tuple, None)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.insert">
 <span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.ConnectDB.ConnectDB.insert" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método que adiciona dados em uma tabela. <em>Informação importante</em> ao passar os kwargs, deve-se passar como chave todas as colunas nas quais os dados podem ser inseridos, e os valores é o que será adicionado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>str</em>) – String que represta a tabela nos quais os dados vão ser adicionados.</p></li>
+<li><p><strong>**kwargs</strong> – chaves reprensentam colunas e os valores dessas chaves os valores adicionados.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ConnectDB</span> <span class="kn">import</span> <span class="n">ConnectDB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span> <span class="o">=</span> <span class="n">ConnectDB</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;Blocks&quot;</span><span class="p">,</span><span class="n">vote</span><span class="o">=</span><span class="s2">&quot;example1&quot;</span><span class="p">,</span><span class="n">currentHash</span><span class="o">=</span><span class="s2">&quot;example2&quot;</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;example3&quot;</span><span class="p">)</span>
+<span class="go">### Não pode-se esquecer de adicionar todas as colunas que podem ser modificadas.</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.queryRaw">
-<span class="sig-name descname"><span class="pre">queryRaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataTuple</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.ConnectDB.ConnectDB.queryRaw" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">queryRaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataTuple</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.ConnectDB.ConnectDB.queryRaw" title="Link to this definition">¶</a></dt>
+<dd><p>Método que passa uma query diretamente, sem tratamentos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>str</em>) – Uma String que reprensenta a query.</p></li>
+<li><p><strong>dataTuple</strong> (<em>None</em><em>, </em><em>tuple</em>) – A informção complementar para query se necessário. Nesse método é usado self.cursor.execute().</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.remove">
 <span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.ConnectDB.ConnectDB.remove" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método que remove dados em uma tabela. <em>Informação importante</em> Não é igual ao insert(), basta passar algumas colunas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>str</em>) – String que represta a tabela nos quais os dados vão ser retirados.</p></li>
+<li><p><strong>**kwargs</strong> – chaves reprensentam colunas e os valores dessas chaves os valores adicionados.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ConnectDB</span> <span class="kn">import</span> <span class="n">ConnectDB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span> <span class="o">=</span> <span class="n">ConnectDB</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Blocks&quot;</span><span class="p">,</span><span class="n">vote</span><span class="o">=</span><span class="s2">&quot;example1&quot;</span><span class="p">,</span><span class="n">currentHash</span><span class="o">=</span><span class="s2">&quot;example2&quot;</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;example3&quot;</span><span class="p">)</span>
+<span class="go">### Assim remove o(s) Block(s) que tem vote=&quot;example1&quot; AND currentHash=&quot;example2&quot; AND time=&quot;example3&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Blocks&quot;</span><span class="p">,</span><span class="n">vote</span><span class="o">=</span><span class="s2">&quot;example1&quot;</span><span class="p">,</span><span class="n">currentHash</span><span class="o">=</span><span class="s2">&quot;example2&quot;</span><span class="p">)</span>
+<span class="go">### Assim remove o(s) Block(s) que tem vote=&quot;example1&quot; AND currentHash=&quot;example2&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Blocks&quot;</span><span class="p">,</span><span class="n">vote</span><span class="o">=</span><span class="s2">&quot;example1&quot;</span><span class="p">,</span><span class="n">currentHash</span><span class="o">=</span><span class="s2">&quot;example2&quot;</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;example3&quot;</span><span class="p">)</span>
+<span class="go">### Assim remove o(s) Block(s) que tem vote=&quot;example1&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="models.ConnectDB.ConnectDB.search">
 <span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.ConnectDB.ConnectDB.search" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Método que busca dados em uma tabela. <em>Informação importante</em> Não é igual ao insert(), basta passar algumas colunas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table</strong> (<em>str</em>) – String que represta a tabela nos quais os dados vão ser retirados.</p></li>
+<li><p><strong>**kwargs</strong> – chaves reprensentam colunas e os valores dessas chaves os valores adicionados.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Retorna uma lista de tupla com os resultados.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(list)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ConnectDB</span> <span class="kn">import</span> <span class="n">ConnectDB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span> <span class="o">=</span> <span class="n">ConnectDB</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Blocks&quot;</span><span class="p">,</span><span class="n">vote</span><span class="o">=</span><span class="s2">&quot;example1&quot;</span><span class="p">,</span><span class="n">currentHash</span><span class="o">=</span><span class="s2">&quot;example2&quot;</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;example3&quot;</span><span class="p">)</span>
+<span class="go">### Assim retorna o(s) Block(s) que tem vote=&quot;example1&quot; AND currentHash=&quot;example2&quot; AND time=&quot;example3&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Blocks&quot;</span><span class="p">,</span><span class="n">vote</span><span class="o">=</span><span class="s2">&quot;example1&quot;</span><span class="p">,</span><span class="n">currentHash</span><span class="o">=</span><span class="s2">&quot;example2&quot;</span><span class="p">)</span>
+<span class="go">### Assim retorna o(s) Block(s) que tem vote=&quot;example1&quot; AND currentHash=&quot;example2&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condb</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Blocks&quot;</span><span class="p">,</span><span class="n">vote</span><span class="o">=</span><span class="s2">&quot;example1&quot;</span><span class="p">,</span><span class="n">currentHash</span><span class="o">=</span><span class="s2">&quot;example2&quot;</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;example3&quot;</span><span class="p">)</span>
+<span class="go">### Assim retorna o(s) Block(s) que tem vote=&quot;example1&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-models.Digest">
-<span id="models-digest-module"></span><h2>models.Digest module<a class="headerlink" href="#module-models.Digest" title="Link to this heading">¶</a></h2>
+<span id="models-digest-module"></span><span id="models-digest-label"></span><h2>models.Digest module<a class="headerlink" href="#module-models.Digest" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="models.Digest.digest">
 <span class="sig-prename descclassname"><span class="pre">models.Digest.</span></span><span class="sig-name descname"><span class="pre">digest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stringToHash</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#models.Digest.digest" title="Link to this definition">¶</a></dt>
-<dd><p>Esta é uma descrição da função.</p>
+<dd><p>Função que gera o hash (SHA256) a partir de uma string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>parametro</strong> (<em>tipo</em>) – Descrição do parâmetro.</p>
+<dd class="field-odd"><p><strong>stringToHash</strong> (<em>str</em>) – String a partir da qual será gerado seu hash (SHA256).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Descrição do que a função retorna.</p>
+<dd class="field-even"><p>Retorna uma string de caracteres hexadecimal, o hash (SHA256).</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tipo_de_retorno</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">Digest</span> <span class="kn">import</span> <span class="n">digest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">digest</span><span class="p">(</span><span class="s2">&quot;ola_mundo&quot;</span><span class="p">))</span>
+<span class="go">fb1d6b9f693828ea898bed8c7d955b0f1d8327bc2fd1c2920b5439ccdc76071f</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -132,7 +345,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="models.GenerateTables.generateTables">
 <span class="sig-prename descclassname"><span class="pre">models.GenerateTables.</span></span><span class="sig-name descname"><span class="pre">generateTables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.GenerateTables.generateTables" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Função que cria as tabelas do Banco de dados.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#models-connectdb-label"><span class="std std-ref">models.ConnectDB module</span></a></p></li>
+</ul>
+</div>
+</dd></dl>
 
 </section>
 <section id="module-models.IntegrityCheck">
@@ -140,40 +360,51 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="models.IntegrityCheck.integrityCheck">
 <span class="sig-prename descclassname"><span class="pre">models.IntegrityCheck.</span></span><span class="sig-name descname"><span class="pre">integrityCheck</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.IntegrityCheck.integrityCheck" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="module-models">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models" title="Link to this heading">¶</a></h2>
-<p>Este é um exemplo de módulo que contém funções úteis.</p>
-<p>Este módulo fornece várias funções úteis para realizar operações específicas.
-Pode incluir uma descrição mais detalhada do que o módulo faz e exemplos
-de uso das funções disponíveis no módulo.</p>
-<dl>
-<dt>Exemplo:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">meu_modulo</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">meu_modulo</span><span class="o">.</span><span class="n">minha_funcao</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="go">5</span>
-</pre></div>
-</div>
+<dd><p>Função que verifica a integridade de cadeia de Blocks no banco de dados</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Retorna um bool que nos informa se a cadeia de Blocks é integra ou não</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">IntegrityCheck</span> <span class="kn">import</span> <span class="n">integrityCheck</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">integrityCheck</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#models-block-label"><span class="std std-ref">models.Block module</span></a></p></li>
+<li><p><a class="reference internal" href="#models-connectdb-label"><span class="std std-ref">models.ConnectDB module</span></a></p></li>
+</ul>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-models.GetResult">
+<span id="models-getresult-module"></span><h2>models.GetResult module<a class="headerlink" href="#module-models.GetResult" title="Link to this heading">¶</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="models.minha_funcao">
-<span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">minha_funcao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numero</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.minha_funcao" title="Link to this definition">¶</a></dt>
-<dd><p>Esta função recebe um número e retorna a metade desse número.</p>
+<dt class="sig sig-object py" id="models.GetResult.getResult">
+<span class="sig-prename descclassname"><span class="pre">models.GetResult.</span></span><span class="sig-name descname"><span class="pre">getResult</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#models.GetResult.getResult" title="Link to this definition">¶</a></dt>
+<dd><p>Função que retorna um dicionário com o resultado da eleição.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>numero</strong> (<em>float</em>) – O número que será dividido pela metade.</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>retorna dicionário que representa o resultado. a chave é o número do candidato e o valor a quantidade de votos.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A metade do número de entrada.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dict)</p>
 </dd>
 </dl>
 </dd></dl>
 
+</section>
+<section id="module-models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models" title="Link to this heading">¶</a></h2>
+<p>Models contém os arquivos que compoem e gerenciam a blockchain e o banco de dados.</p>
 </section>
 </section>
 

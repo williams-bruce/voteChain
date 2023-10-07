@@ -4,6 +4,8 @@ models package
 Submodules
 ----------
 
+.. _models-block-label:
+
 models.Block module
 -------------------
 
@@ -12,6 +14,8 @@ models.Block module
    :undoc-members:
    :show-inheritance:
 
+.. _models-connectdb-label:
+
 models.ConnectDB module
 -----------------------
 
@@ -19,6 +23,8 @@ models.ConnectDB module
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _models-digest-label:
 
 models.Digest module
 --------------------
@@ -40,6 +46,14 @@ models.IntegrityCheck module
 ----------------------------
 
 .. automodule:: models.IntegrityCheck
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+models.GetResult module
+----------------------------
+
+.. automodule:: models.GetResult
    :members:
    :undoc-members:
    :show-inheritance:

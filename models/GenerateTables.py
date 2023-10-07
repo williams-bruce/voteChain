@@ -1,7 +1,12 @@
 from ConnectDB import ConnectDB
 
 def generateTables():
+    '''
+    Função que cria as tabelas do Banco de dados.
     
+    See Also:
+        - :ref:`models-connectdb-label`
+    '''
     condb = ConnectDB()
 
     blocksTable = "CREATE TABLE `Blocks` (\

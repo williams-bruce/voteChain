@@ -1,1 +1,6 @@
 /venv_vote
+*/__pycache__/
+*/Credentials
+*/Initial_Block_Config
+__pycache__/
+*/studentsId_Mapping

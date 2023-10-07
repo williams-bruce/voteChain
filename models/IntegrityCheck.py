@@ -6,6 +6,22 @@ import colorama
 colorama.init(autoreset=True)
 
 def integrityCheck():
+    '''
+    Função que verifica a integridade de cadeia de Blocks no banco de dados
+
+    Returns:
+        bool: Retorna um bool que nos informa se a cadeia de Blocks é integra ou não
+
+    Examples:
+        >>> from IntegrityCheck import integrityCheck
+        >>> integrityCheck()
+        True
+    
+    See Also:
+        - :ref:`models-block-label`
+        - :ref:`models-connectdb-label`
+    
+    '''
     condb = ConnectDB()
 
     chain = condb.getAllAdded("Blocks")
