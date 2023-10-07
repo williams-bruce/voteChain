@@ -1,3 +1,4 @@
+from pathlib import Path
 from ConnectDB import ConnectDB
 from datetime import datetime
 from Digest import digest
@@ -24,7 +25,7 @@ class Block:
         if previousHash == None:
         
             try:
-                with open("Initial_Block_Config","r") as f:
+                with open(str(Path(__file__).parent)+"/"+"Initial_Block_Config","r") as f:
                     initialBlockConfig = {}
                     lines = f.read().splitlines()
                     for line in lines:
@@ -36,7 +37,7 @@ class Block:
                     previousHash = initialBlockConfig['currentHash']
             
             except FileNotFoundError:
-                exit(colorama.Back.RED+"arquivo 'Initial_Block_Config' não existe!!")
+                print(colorama.Back.RED+"arquivo 'Initial_Block_Config' não existe!!")
         
         Block.currentStudentId = studentId #Não inserido no BD
 
@@ -50,9 +51,3 @@ class Block:
         with open("studentsId_Mapping", "a") as f:
             f.write(f"{id}={Block.currentStudentId}\n")
 
-a = Block("10","id001")
-a.insert()
-b = Block("20","id002")
-b.insert()
-c = Block("30","id003")
-c.insert()

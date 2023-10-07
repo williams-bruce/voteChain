@@ -1,3 +1,4 @@
+from pathlib import Path
 from ConnectDB import ConnectDB
 from Digest import digest
 import colorama
@@ -16,13 +17,13 @@ def integrityCheck():
     eidToStudentsId = {}
 
     try:
-        with open("studentsId_Mapping","r") as f:
+        with open(str(Path(__file__).parent)+"/"+"studentsId_Mapping","r") as f:
             for line in f.read().splitlines():
                 dkey, dvalue = line.split("=")
                 eidToStudentsId.update({int(dkey): dvalue})
     
     except FileNotFoundError:
-        exit(colorama.Back.RED+"arquivo 'studentsId_Mapping' não existe!!")
+        print(colorama.Back.RED+"arquivo 'studentsId_Mapping' não existe!!")
 
     for block in chain:
         eid, vote, currentHash, time = block

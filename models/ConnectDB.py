@@ -1,3 +1,4 @@
+from pathlib import Path
 import mysql.connector
 import colorama
 
@@ -9,13 +10,13 @@ class ConnectDB:
         credentials = {}
 
         try:
-            with open("Credentials","r") as f:
+            with open(str(Path(__file__).parent)+"/"+"Credentials","r") as f:
                 lines = f.read().splitlines()
                 for line in lines:
                     dkey, dvalue = line.split("=")
                     credentials.update({dkey: dvalue})
         except FileNotFoundError:
-            exit(colorama.Back.RED+"arquivo 'Credentials' não exite!!")
+            print(colorama.Back.RED+"arquivo 'Credentials' não existe!!")
 
         self.connection = mysql.connector.connect(**credentials)
 
@@ -81,4 +82,5 @@ class ConnectDB:
         return self.cursor.fetchone()
     
     def __del__(self) -> None:
-        self.connection.close()
+        if hasattr(self,'connection'):
+            self.connection.close()
