@@ -21,6 +21,7 @@ def generateTables():
         `codigo` varchar(10) NOT NULL,\
         `nome` varchar(255) NOT NULL,\
         `partido` varchar(255) NOT NULL,\
+        `foto` varchar(255) NOT NULL,\
         `time` timestamp NOT NULL DEFAULT current_timestamp(),\
         PRIMARY KEY (`codigo`)\
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;"
