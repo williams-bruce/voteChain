@@ -82,5 +82,3 @@ class ConnectDB:
     
     def __del__(self) -> None:
         self.connection.close()
-
-a = ConnectDB()
