@@ -12,10 +12,7 @@ class UrnaController():
 class Urna(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
-        self.controller = UrnaController(self)
-        self.initComponents()
-
-    def initComponents(self):
+        # self.controller = UrnaController(self)
         self.title('Votação segura com BlockChain!')
 
         ############ CRIANDO A WINDOW ############
@@ -29,13 +26,13 @@ class Urna(tk.Tk):
         self.resizable(False, False)
 
         # Setando imagem do background
-        image_bg = tk.PhotoImage(file=r'D:\Documentos\programacao\eng_comp\python\voteChain\views\images\urna-vista-cima.png')
-        label = tk.Label(self, image=image_bg)
-        label.place(x=0, y=0)
+        self.image_bg = tk.PhotoImage(file=r'D:\Documentos\programacao\eng_comp\python\voteChain\views\images\urna-vista-cima.png')
+        self.label = tk.Label(self, image=self.image_bg)
+        self.label.place(x=0, y=0)
 
         # Criando os botões
-        btn_confirmar = tk.Button(self, border=0, width=8, height=2, text='confirmar', )
-        btn_confirmar.place(x=810, y=475)
+        self.btn_confirmar = tk.Button(self, border=0, width=8, height=2, text='confirmar', )
+        self.btn_confirmar.place(x=810, y=475)
 
         ############ FIM DA CRIAÇÃO DA WINDOW ############
 
@@ -137,48 +134,48 @@ class Urna(tk.Tk):
         ############ FIM DO FRAME FIM ############
 
         ############ CRIANDO FRAME BRANCO ############
-        frame_branco = tk.Frame(self, bd=5, width=510, height=297, background="grey")
-        frame_branco.place(x=84, y=215)
+        self.frame_branco = tk.Frame(self, bd=5, width=510, height=297, background="grey")
+        self.frame_branco.place(x=84, y=215)
 
         # Criando Label de texto SEU VOTO PARA
-        font_seuVoto = font.Font(family='Helvetica', size=14)
-        label_seuVoto = tk.Label(frame_branco, text="Seu voto para:", bg='grey')
-        label_seuVoto['font'] = font_seuVoto
-        label_seuVoto.place(x=20, y=10)
+        self.font_seuVoto = font.Font(family='Helvetica', size=14)
+        self.label_seuVoto = tk.Label(self.frame_branco, text="Seu voto para:", bg='grey')
+        self.label_seuVoto['font'] = self.font_seuVoto
+        self.label_seuVoto.place(x=20, y=10)
 
         # Criando Label de texto PRESIDENTE DO GRIFO
-        font_presidenteGrifo = font.Font(family='Helvetica', size=18)
-        label_presidente_grifo = tk.Label(frame_branco, text="PRESIDENTE DO GRIFO", bg='grey')
-        label_presidente_grifo['font'] = font_presidenteGrifo
-        label_presidente_grifo.place(x=50, y=50)
+        self.font_presidenteGrifo = font.Font(family='Helvetica', size=18)
+        self.label_presidente_grifo = tk.Label(self.frame_branco, text="PRESIDENTE DO GRIFO", bg='grey')
+        self.label_presidente_grifo['font'] = self.font_presidenteGrifo
+        self.label_presidente_grifo.place(x=50, y=50)
 
         # Criando Label de texto VOTO EM BRANCO
-        font_voto_branco = font.Font(family='Helvetica', size=38)
-        label_voto_brancco = tk.Label(frame_branco, text="VOTO EM BRANCO", bg='grey')
-        label_voto_brancco['font'] = font_voto_branco
-        label_voto_brancco.place(x=14, y=100)
+        self.font_voto_branco = font.Font(family='Helvetica', size=38)
+        self.label_voto_brancco = tk.Label(self.frame_branco, text="VOTO EM BRANCO", bg='grey')
+        self.label_voto_brancco['font'] = self.font_voto_branco
+        self.label_voto_brancco.place(x=14, y=100)
 
         # Colocando SEPARATOR
-        separator = tk.Frame(frame_branco,bg="black", height=1, bd=0)
-        separator.place(x=2, y=200, width=500)
+        self.separator = tk.Frame(self.frame_branco,bg="black", height=1, bd=0)
+        self.separator.place(x=2, y=200, width=500)
 
         # Criando Label de texto APERTE A TECLA
-        font_aperte_tecla = font.Font(family='Helvetica', size=12)
-        label_aperte_tecla = tk.Label(frame_branco, text="APERTE A TECLA:", bg='grey')
-        label_aperte_tecla['font'] = font_aperte_tecla
-        label_aperte_tecla.place(x=5, y=215)
+        self.font_aperte_tecla = font.Font(family='Helvetica', size=12)
+        self.label_aperte_tecla = tk.Label(self.frame_branco, text="APERTE A TECLA:", bg='grey')
+        self.label_aperte_tecla['font'] = self.font_aperte_tecla
+        self.label_aperte_tecla.place(x=5, y=215)
 
         # Criando Label de texto VERDE PARA CONFIRMAR
-        font_confirmar = font.Font(family='Helvetica', size=12)
-        label_confirmar = tk.Label(frame_branco, text="VERDE para Confirmar", bg='grey')
-        label_confirmar['font'] = font_confirmar
-        label_confirmar.place(x=30, y=240)
+        self.font_confirmar = font.Font(family='Helvetica', size=12)
+        self.label_confirmar = tk.Label(self.frame_branco, text="VERDE para Confirmar", bg='grey')
+        self.label_confirmar['font'] = self.font_confirmar
+        self.label_confirmar.place(x=30, y=240)
 
         # Criando Label de texto LARANJA PARA CORRIGIR
-        font_corrigir = font.Font(family='Helvetica', size=12)
-        label_corrigir = tk.Label(frame_branco, text="LARANJA para Corrigir", bg='grey')
-        label_corrigir['font'] = font_corrigir
-        label_corrigir.place(x=30, y=265)
+        self.font_corrigir = font.Font(family='Helvetica', size=12)
+        self.label_corrigir = tk.Label(self.frame_branco, text="LARANJA para Corrigir", bg='grey')
+        self.label_corrigir['font'] = self.font_corrigir
+        self.label_corrigir.place(x=30, y=265)
 
         ############ FIM DO FRAME BRANCO ############
         

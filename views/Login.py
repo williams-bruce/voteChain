@@ -1,7 +1,6 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-
 import tkinter as tk
 import tkinter.font as font
 from tkinter import ttk
@@ -15,12 +14,13 @@ class LoginController:
         self.view = view
     
     
-    def btnSubimit(nao_sei, code):
+    def btnSubimit(self, code):
         model = db()
         resultado = model.search('eleitores', codigo=code)
         if resultado:
             print(f'Fui pressionado: {resultado[0]}')
             showinfo('Autenticação de eleitores', f'Aluno {resultado[0][0]} autenticado!')
+            self.view.quit()
         else:
             showerror('Eleitor não encontrado', f'Eleitor não encontrado: {code}')
 
