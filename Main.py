@@ -1,8 +1,7 @@
-from views.cLogin import Login
+from views.Login import Login
 
 def main():
     login = Login()
-    login.mainloop()
     
     
 if __name__ == '__main__':
