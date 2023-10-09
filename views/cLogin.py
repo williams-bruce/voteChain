@@ -3,12 +3,13 @@ import tkinter.font as font
 from tkinter import ttk
 from PIL import ImageTk, Image
 
+'''Classe que representa um objeto do tipo view Login'''
 class Login(tk.Tk):
-    def __init__(self, screenName: str | None = None, baseName: str | None = None, className: str = "Tk", useTk: bool = True, sync: bool = False, use: str | None = None) -> None:
-        super().__init__(screenName, baseName, className, useTk, sync, use)
+    def __init__(self) -> None:
+        super().__init__()
+        # self.init_components()
         
     
-    def init_components(self):
         self.title('Votação segura com BlockChain!')
 
         # Posicionando a Tela no centro
@@ -47,7 +48,6 @@ class Login(tk.Tk):
         self.resizable(False, False)
     
 
-
-login = Login()
-login.init_components()
-login.mainloop()
+if __name__ == '__main__':
+    login = Login()
+    login.mainloop()
