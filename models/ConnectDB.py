@@ -126,7 +126,6 @@ class ConnectDB:
             query = query[:-5] + ";"
             
             self.cursor.execute(query,tuple(kwargs.values()))
-            #self.connection.commit()
 
             return self.cursor.fetchall()
 
