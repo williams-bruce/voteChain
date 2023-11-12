@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-    <form method="POST" action="">
+    <form method="POST" action="" id="voteForm">
         <div class="pageBody">
             <div class="leftColumn">
                 <div class="screen">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="inputContainer">
                             <label for="userInput">NÚMERO DO CANDIDATO:</label>
-                            <input type="text" id="userInput" name="numero" pattern="\d{5}" title="Por favor, insira um número de 5 dígitos." required>
+                            <input type="text" id="userInput" name="numero" pattern="\d{5}" title="Por favor, insira um número de 5 dígitos." required maxlength="5">
                         </div>
                     </div>
                 </div>
