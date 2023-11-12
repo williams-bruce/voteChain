@@ -5,14 +5,20 @@ from src import db
 
 @app.route('/', methods = ['POST','GET'])
 def home():
+    vars = {
+        'page': 'inicio'
+    }
     if request.method == 'POST':
-        print(request.form)
+        
         numero = request.form.get('numero')
         resultado = db.search('eleitores', codigo = numero)
         if resultado:
-            return f'<h1>O numero do eleitor é {numero}</h1><br> e o nome é {resultado[0][0]}'
-        return f'<h1>O numero do eleitor é {numero}</h1><br>Mas esse eleitor não estã no BD'
-    return render_template('urna-copy.html')
+            vars['page'] = 'votacao'
+            return render_template('urna-copy-copy.html', **vars)
+        else:
+            vars['page'] = 'eleitorNotFound'
+            return render_template('urna-copy-copy.html', **vars)
+    return render_template('urna-copy-copy.html', **vars)
 
 
 @app.route('/vote', methods = ['POST', 'GET'])
@@ -24,3 +30,8 @@ def vote():
             return # Mostrar foto, nome, partido, etc na mesma tela
         
     return render_template('vote.html')
+
+
+@app.route('/confirmVote', methods = ['POST', 'GET'])
+def confirm_vote():
+    return render_template('confirm_vote.html')
