@@ -32,21 +32,11 @@
     height: 100%;
 }
 
-.studentNotFound {
-    display: none;
-}
-
-.studentFound {
-    display: none;
-}
-
 .votePage {
     height: 100%;
-    display: none;
 }
 
 .endPage {
-    display: none;
     font-size: 6rem;
     text-align: center;
 }
