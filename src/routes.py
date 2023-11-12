@@ -2,7 +2,7 @@ from flask import render_template, session
 from flask import request
 from src import app
 from src import db
-from models.Block import Block
+from src.models.Block import Block
 
 
 @app.route('/', methods = ['POST','GET'])
@@ -53,6 +53,8 @@ def confirma():
             return render_template('urna-end.html')
         
         candidato = request.form.get('confirma')
-        Block(candidato, eleitor)
+        print(candidato, '->',type(candidato))
+        print(eleitor, '->',type(eleitor))
+        Block(str(candidato), str(eleitor))
         return render_template('urna-end.html')
         

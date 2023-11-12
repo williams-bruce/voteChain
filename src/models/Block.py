@@ -1,8 +1,9 @@
 from pathlib import Path
-from ConnectDB import ConnectDB
+from .Digest import digest
+from .ConnectDB import ConnectDB
 from datetime import datetime
-from Digest import digest
 import colorama
+import os
 
 colorama.init(autoreset=True)
 
@@ -81,7 +82,7 @@ class Block:
         if previousHash == None:
         
             try:
-                with open(str(Path(__file__).parent)+"/"+"Initial_Block_Config","r") as f:
+                with open(os.path.join(Path(__file__).parent, "Initial_Block_Config"),"r") as f:
                     initialBlockConfig = {}
                     lines = f.read().splitlines()
                     for line in lines:
