@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votechain</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <form method="POST" action="">
+        <div class="pageBody">
+            <div class="leftColumn">
+                <div class="screen">
+                    <div class="votePage">
+                        <div class="beginMessage">
+                            <h1>SEU VOTO</h1>
+                        </div>
+                        <div class="inputContainer">
+                            <label for="userInput">NÚMERO DO CANDIDATO:</label>
+                            <input type="text" id="userInput" name="numero" pattern="\d{5}" title="Por favor, insira um número de 5 dígitos." required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rightColumn">
+                <div class="header">
+                    <img class="headerLogo" src="../static/images/IME-logo.png">
+                    <div class="headerTitle">
+                        <h1>INSTITUTO MILITAR</h1>
+                        <h1>DE ENGENHARIA</h1>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="numbers">
+                        <div class="numberRow">
+                            <button onclick="handleInputChange('1')">1</button>
+                            <button onclick="handleInputChange('2')">2</button>
+                            <button onclick="handleInputChange('3')">3</button>
+                        </div>
+                        <div class="numberRow">
+                            <button onclick="handleInputChange('4')">4</button>
+                            <button onclick="handleInputChange('5')">5</button>
+                            <button onclick="handleInputChange('6')">6</button>
+                        </div>
+                        <div class="numberRow">
+                            <button onclick="handleInputChange('7')">7</button>
+                            <button onclick="handleInputChange('8')">8</button>
+                            <button onclick="handleInputChange('9')">9</button>
+                        </div>
+                        <div class="numberRow">
+                            <button onclick="handleInputChange('0')">0</button>
+                        </div>
+                    </div>
+                    <div class="select">
+                        <div class="selectRow">
+                            <button id="nullButton" onclick="handleNULLButton()">BRANCO</button>
+                            <button id="correctButton" onclick="handleInputCorrection()">CORRIGE</button>
+                            <button type="submit" value="confirm" id="confirmButton" onclick="handleConfirmButton()">CONFIRMA</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        <script src="../static/script.js"></script> 
+</body>
+</html>
