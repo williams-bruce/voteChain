@@ -16,10 +16,8 @@
                             <h1>INÍCIO DA VOTAÇÃO</h1>
                         </div>
                         <div class="inputContainer">
-                            <!-- <div>NÚMERO DO ELEITOR:</div> -->
                             <label for="userInput">NÚMERO DO ELEITOR:</label>
                             <input type="text" id="userInput" name="numero" pattern="\d{5}" title="Por favor, insira um número de 5 dígitos." required maxlength="5">
-                            <!-- <div id="userInput"></div> -->
                         </div>
                     </div>
     
@@ -56,9 +54,9 @@
                     </div>
                     <div class="select">
                         <div class="selectRow">
-                            <button id="nullButton" onclick="handleNULLButton()">BRANCO</button>
+                            <button type="submit" name="branco" value="branco" id="nullButton">BRANCO</button>
                             <button id="correctButton" onclick="handleInputCorrection()">CORRIGE</button>
-                            <button type="submit" value="confirm" id="confirmButton" onclick="handleConfirmButton()">CONFIRMA</button>
+                            <button type="submit" name="confirma" value="confirm" id="confirmButton" onclick="handleConfirmButton()">CONFIRMA</button>
                         </div>
                     </div>
                 </div>

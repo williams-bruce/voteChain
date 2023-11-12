@@ -12,16 +12,19 @@
             <div class="leftColumn">
                 <div class="screen">
                     <div class="votePage">
-                        <div class="cadidateImage">
-                            <img id="candidateImageElement" src="" >
-                        </div>
-                        <div class="inputContainer">
-                            <div>NOME DO CANDIDATO:</div>
-                            <div id="candidateName"> </div>     
-                        </div>
-                        <!--<div class="studentNotFound">
-                        <h1>CANDIDATO NÃO ENCONTRADO</h1>
-                        </div> -->
+                        {% if candidatoFound %}
+                            <div class="cadidateImage">
+                                <img id="candidateImageElement" src="{{ url_for('static', filename='images/candidatos/{}'.format(foto)) }}" >
+                            </div>
+                            <div class="inputContainer">
+                                <div>NOME DO CANDIDATO:</div>
+                                <div id="candidateName"> {{ nome }} </div>
+                            </div>
+                        {% else %}
+                            <div class="studentNotFound">
+                                <h1>CANDIDATO NÃO ENCONTRADO. TENTE NOVAMENTE APERTANDO CONFIRMA.</h1>
+                            </div>
+                        {% endif %}
                     </div> 
                 </div>
             </div>
@@ -58,7 +61,11 @@
                         <div class="selectRow">
                             <button id="nullButton" onclick="handleNULLButton()">BRANCO</button>
                             <button id="correctButton" onclick="handleInputCorrection()">CORRIGE</button>
-                            <button type="submit" value="confirm" id="confirmButton" onclick="handleConfirmButton()">CONFIRMA</button>
+                            {% if candidatoFound %}
+                                <button name="confirma" value="{{numero}}" id="confirmButton" onclick="handleConfirmButton()">CONFIRMA</button>
+                            {% else %}
+                                <a href="{{ url_for('votacao') }}">CONFIRMA</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

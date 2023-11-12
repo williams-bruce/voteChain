@@ -12,14 +12,14 @@
             <div class="leftColumn">
                 <div class="screen">
                     {% if eleitorFound %}
-                    <div class="studentFound">
-                        <h1 id="studendFoundMessage"></h1>
-                    </div>
+                        <div class="studentFound">
+                            <h1 id="studendFoundMessage">ALUNO ENCONTRADO!!!</h1>
+                            Votação liberada para {{ aluno }}. Aperte CONFIRMA para continuar.
+                        </div>
                     {% else %}
-                    <div class="studentNotFound">
-                        <h1>ALUNO NÃO ENCONTRADO</h1>
-                    </div>
-                    <div>aluno não encontradoooo!@#</div>
+                        <div class="studentNotFound">
+                            <h1>ALUNO NÃO ENCONTRADO. TENTE NOVAMENTE APERTANDO CONFIRMA.</h1>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -56,13 +56,17 @@
                         <div class="selectRow">
                             <button id="nullButton" onclick="handleNULLButton()">BRANCO</button>
                             <button id="correctButton" onclick="handleInputCorrection()">CORRIGE</button>
-                            <button type="submit" value="confirm" id="confirmButton" onclick="handleConfirmButton()">CONFIRMA</button>
+                            {% if eleitorFound %}
+                                <a id="confirmButton" href="{{ url_for('votacao') }}">CONFIRMA</a>
+                            {% else %}
+                                <button id="confirmButton">CONFIRMA</button>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-        <script src="../static/script.js"></script> 
+        <script src="../static/script.js"></script>
 </body>
 </html>

@@ -18,3 +18,8 @@ function handleInputCorrection() {
 }
 
 
+function handleConfirmButton() {
+    document.getElementById("voteForm").onsubmit = function () {
+        return true;
+    }
+}
