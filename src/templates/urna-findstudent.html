@@ -34,27 +34,27 @@
                 <div class="buttons">
                     <div class="numbers">
                         <div class="numberRow">
-                            <button onclick="handleInputChange('1')">1</button>
-                            <button onclick="handleInputChange('2')">2</button>
-                            <button onclick="handleInputChange('3')">3</button>
+                            <button onclick="handleInputChange('1')" disabled>1</button>
+                            <button onclick="handleInputChange('2')" disabled>2</button>
+                            <button onclick="handleInputChange('3')" disabled>3</button>
                         </div>
                         <div class="numberRow">
-                            <button onclick="handleInputChange('4')">4</button>
-                            <button onclick="handleInputChange('5')">5</button>
-                            <button onclick="handleInputChange('6')">6</button>
+                            <button onclick="handleInputChange('4')" disabled>4</button>
+                            <button onclick="handleInputChange('5')" disabled>5</button>
+                            <button onclick="handleInputChange('6')" disabled>6</button>
                         </div>
                         <div class="numberRow">
-                            <button onclick="handleInputChange('7')">7</button>
-                            <button onclick="handleInputChange('8')">8</button>
-                            <button onclick="handleInputChange('9')">9</button>
+                            <button onclick="handleInputChange('7')" disabled>7</button>
+                            <button onclick="handleInputChange('8')" disabled>8</button>
+                            <button onclick="handleInputChange('9')" disabled>9</button>
                         </div>
                         <div class="numberRow">
-                            <button onclick="handleInputChange('0')">0</button>
+                            <button onclick="handleInputChange('0')" disabled>0</button>
                         </div>
                     </div>
                     <div class="select">
                         <div class="selectRow">
-                            <button id="nullButton" onclick="handleNULLButton()">BRANCO</button>
+                            <button id="nullButton" onclick="handleNULLButton()" disabled>BRANCO</button>
                             <button id="correctButton" onclick="handleInputCorrection()">CORRIGE</button>
                             {% if eleitorFound %}
                                 <a id="confirmButton" href="{{ url_for('votacao') }}">CONFIRMA</a>

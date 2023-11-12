@@ -16,7 +16,6 @@ def home():
                 vars['aluno'] = resultado[0][0]
                 return render_template('urna-findstudent.html', **vars)
             else:
-                print('entrei no else')
                 vars['eleitorFound'] = False
                 return render_template('urna-findstudent.html', **vars)
     return render_template('urna-initialpage.html', **vars)
@@ -26,10 +25,8 @@ def home():
 def votacao():
     vars = {'candidatoFound': True}
     if request.method == 'POST':
-        if 'confirma' in request.form:
-            valor = request.form['confirma']
-            print(valor)
-            
+        if 'branco' in request.form:
+            return render_template('urna-null.html')
         numeroCandidato = request.form.get('numeroCandidato')
         resultado = db.search('candidatos', codigo = numeroCandidato)
         if resultado:
@@ -42,3 +39,14 @@ def votacao():
             vars = {'candidatoFound': False}
             return render_template('urna-findcandidate.html', **vars)
     return render_template('urna-vote.html')
+
+
+@app.route('/confirmarVoto', methods=['POST','GET'])
+def confirma():
+    if request.method =='POST':
+        if request.form['confirma'] == 'branco':
+            return render_template('urna-end.html')
+        
+        candidato = request.form.get('confirma')
+        return render_template('urna-end.html')
+        
