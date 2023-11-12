@@ -11,12 +11,16 @@
         <div class="pageBody">
             <div class="leftColumn">
                 <div class="screen">
-                    <!--<div class="studentNotFound">
-                        <h1>ALUNO NÃO ENCONTRADO</h1>
-                    </div> -->
+                    {% if eleitorFound %}
                     <div class="studentFound">
                         <h1 id="studendFoundMessage"></h1>
-                    </div> 
+                    </div>
+                    {% else %}
+                    <div class="studentNotFound">
+                        <h1>ALUNO NÃO ENCONTRADO</h1>
+                    </div>
+                    <div>aluno não encontradoooo!@#</div>
+                    {% endif %}
                 </div>
             </div>
             <div class="rightColumn">
