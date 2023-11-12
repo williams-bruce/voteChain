@@ -32,21 +32,11 @@
     height: 100%;
 }
 
-.studentNotFound {
-    display: none;
-}
-
-.studentFound {
-    display: none;
-}
-
 .votePage {
     height: 100%;
-    display: none;
 }
 
 .endPage {
-    display: none;
     font-size: 6rem;
     text-align: center;
 }
@@ -75,6 +65,7 @@
 #userInput {
     padding: 0 2rem;
     letter-spacing: 1.5rem;
+    width: 9.8rem;
 }
 
 #userInputCandidate {
