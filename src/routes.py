@@ -3,7 +3,7 @@ from flask import request
 from src import app
 from src import db
 
-"""@app.route('/', methods = ['POST','GET'])
+@app.route('/', methods = ['POST','GET'])
 def home():
     vars = {
         'page': 'inicio'
